@@ -8,4 +8,6 @@ $MESS ['MFP_ALL_REQ'] = "(all non-required)";
 $MESS ['MFP_NAME'] = "Name";
 $MESS ['MFP_MESSAGE'] = "Message";
 $MESS ['MFP_EMAIL_TEMPLATES'] = "E-mail Templates";
+$MESS ['MFP_DEFAULT_FIELDS'] = "Show default fields (All if is empty)";
+$MESS ['MFP_USER_FIELDS'] = "User custom fields";
 ?>

@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 		if(empty($arParams["REQUIRED_FIELDS"]) || !in_array("NONE", $arParams["REQUIRED_FIELDS"]))
 		{
 			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("NAME", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["user_name"]) <= 1)
-				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_NAME");		
+				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_NAME");
 			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("EMAIL", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["user_email"]) <= 1)
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_REQ_EMAIL");
 			if((empty($arParams["REQUIRED_FIELDS"]) || in_array("MESSAGE", $arParams["REQUIRED_FIELDS"])) && strlen($_POST["MESSAGE"]) <= 3)
@@ -40,8 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 		}
 		/** Custom: Start  */
 		if(isset($arParams["USER_FIELDS"]) && is_array($arParams["USER_FIELDS"])) {
-			$MESSAGE = $_POST["MESSAGE"];
-			$MESSAGE .= "\r\n\r\n";
+			$MESSAGE = '';
 			foreach ($arParams["USER_FIELDS"] as $strField) {
 				if( !$strField ) continue;
 				// as required
@@ -55,6 +54,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 				$arResult["USER_FIELDS"][ $arField[0] ] = htmlspecialcharsbx($_POST[ $arField[0] ]);
 				$MESSAGE .= "\r\n" . $arField[1] . ": " . htmlspecialcharsbx($_POST[ $arField[0] ]);
 			}
+
+			$MESSAGE .= "\r\n\r\n";
+			$MESSAGE .= htmlspecialcharsbx($_POST["MESSAGE"]);
 		}
 		/** Custom: End */
 		if(strlen($_POST["user_email"]) > 1 && !check_email($_POST["user_email"]))
@@ -73,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 			else
 				$arResult["ERROR_MESSAGE"][] = GetMessage("MF_CAPTHCA_EMPTY");
 
-		}			
+		}
 		if(empty($arResult["ERROR_MESSAGE"]))
 		{
 			$arFields = Array(
@@ -94,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 			$_SESSION["MF_EMAIL"] = htmlspecialcharsbx($_POST["user_email"]);
 			LocalRedirect($APPLICATION->GetCurPageParam("success=".$arResult["PARAMS_HASH"], Array("success")));
 		}
-		
+
 		$arResult["MESSAGE"] = htmlspecialcharsbx($_POST["MESSAGE"]);
 		$arResult["AUTHOR_NAME"] = htmlspecialcharsbx($_POST["user_name"]);
 		$arResult["AUTHOR_EMAIL"] = htmlspecialcharsbx($_POST["user_email"]);

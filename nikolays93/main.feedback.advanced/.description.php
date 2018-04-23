@@ -9,4 +9,3 @@ $arComponentDescription = array(
 		"ID" => "utility",
 	),
 );
-?>

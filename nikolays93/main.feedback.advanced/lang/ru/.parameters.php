@@ -8,4 +8,6 @@ $MESS ['MFP_ALL_REQ'] = "(все необязательные)";
 $MESS ['MFP_NAME'] = "Имя";
 $MESS ['MFP_MESSAGE'] = "Сообщение";
 $MESS ['MFP_EMAIL_TEMPLATES'] = "Почтовые шаблоны для отправки письма";
+$MESS ['MFP_DEFAULT_FIELDS'] = "Показывать стандартные поля (все, если не выбрано)";
+$MESS ['MFP_USER_FIELDS'] = "Пользовательские поля";
 ?>

@@ -13,12 +13,18 @@ while($arType = $dbType->GetNext())
 
 $arComponentParameters = array(
 	"PARAMETERS" => array(
+		"DEFAULT_FIELDS" => Array(
+			"NAME" => GetMessage("MFP_DEFAULT_FIELDS"), 
+			"TYPE"=>"LIST", 
+			"MULTIPLE"=>"Y", 
+			"VALUES" => Array("NAME" => GetMessage("MFP_NAME"), "EMAIL" => "E-mail", "MESSAGE" => GetMessage("MFP_MESSAGE")),
+			"DEFAULT"=>"", 
+			"COLS"=>25, 
+			"PARENT" => "BASE",
+		),
 		"USER_FIELDS" => Array(
-			"NAME" => GetMessage("MFP_EMAIL_TEMPLATES"), 
+			"NAME" => GetMessage("MFP_USER_FIELDS"), 
 			"TYPE"=>"TEXT", 
-			"VALUES" => array(
-				'phone:Телефон'
-			),
 			"MULTIPLE"=>"Y", 
 			"PARENT" => "BASE",
 		),
@@ -59,9 +65,5 @@ $arComponentParameters = array(
 			"COLS"=>25, 
 			"PARENT" => "BASE",
 		),
-
 	)
 );
-
-
-?>
