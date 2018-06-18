@@ -2,16 +2,18 @@
 
 $arComponentDescription = array(
 	"NAME" => 'Пустой компонент (техн.)',
-	"DESCRIPTION" => 'Пустой компонент для технических работ',
+	"DESCRIPTION" => 'Технический пустой компонент для развития проекта',
 	"ICON" => "/images/icon.gif",
-	"COMPLEX" => "N",
 	"SORT" => 10,
+	"CACHE_PATH" => "Y",
 	"PATH" => array(
-		"ID" => "Seo18.ru",
-		// "CHILD" => array(
-		// 	"ID" => "nikolays93:empty",
-		// 	"NAME" => 'Пустой компонент (техн.)',
-		// 	"SORT" => 30,
-		// )
-	)
+		"ID" => "Персональные решения", // for example "my_project"
+		/*"CHILD" => array(
+			"ID" => "", // for example "my_project:services"
+			"NAME" => "",  // for example "Services"
+		),*/
+	),
+	// "COMPLEX" => "N",
 );
+
+?>
