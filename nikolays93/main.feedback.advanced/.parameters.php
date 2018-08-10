@@ -28,6 +28,12 @@ $arComponentParameters = array(
 			"MULTIPLE"=>"Y", 
 			"PARENT" => "BASE",
 		),
+		"TEXT_ACCEPTANCE" => Array(
+			"NAME" => GetMessage("MFP_TEXT_ACCEPTANCE"), 
+			"TYPE"=>"TEXT", 
+			"MULTIPLE"=>"Y", 
+			"PARENT" => "BASE",
+		),
 		"USE_CAPTCHA" => Array(
 			"NAME" => GetMessage("MFP_CAPTCHA"), 
 			"TYPE" => "CHECKBOX",

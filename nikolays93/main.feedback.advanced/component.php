@@ -64,6 +64,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 			}
 		}
 
+		if(isset($arParams["TEXT_ACCEPTANCE"]) && is_array($arParams["TEXT_ACCEPTANCE"])) {
+			foreach ($arParams["TEXT_ACCEPTANCE"] as $i => $acceptance) {
+				if(!$acceptance) continue;
+
+				if( empty($_POST[ 'acceptance' . $i ]) )
+					$arResult["ERROR_MESSAGE"][] = sprintf("Условия сайта обязательны к их подтверждению", $label);
+			}
+		}
+
 	if( in_array('EMAIL', $arParams['DEFAULT_FIELDS']) || empty($arParams['DEFAULT_FIELDS']) )
 
 		/** Custom: End */

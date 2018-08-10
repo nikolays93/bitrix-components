@@ -10,4 +10,5 @@ $MESS ['MFP_MESSAGE'] = "Сообщение";
 $MESS ['MFP_EMAIL_TEMPLATES'] = "Почтовые шаблоны для отправки письма";
 $MESS ['MFP_DEFAULT_FIELDS'] = "Показывать стандартные поля (все, если не выбрано)";
 $MESS ['MFP_USER_FIELDS'] = "Пользовательские поля";
+$MESS ['MFP_TEXT_ACCEPTANCE'] = "Текст принятия правил пользования сайта";
 ?>

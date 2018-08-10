@@ -86,6 +86,20 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
 		<input type="hidden" name="EMPTY_MESSAGE" value="1">
 	<?endif;?>
 
+	<?php
+	/** Custom: Start */
+	if( !empty($arParams['TEXT_ACCEPTANCE']) && is_array($arParams['TEXT_ACCEPTANCE']) ) {
+		?><div class="acceptance"><?
+		foreach ($arParams['TEXT_ACCEPTANCE'] as $i => $acceptance) {
+			if(!$acceptance) continue;
+			?>
+			<p><input type="checkbox" name="acceptance<?=$i;?>" value="1" required="true"><span><?=htmlspecialcharsBack($acceptance);?></span></p>
+			<?
+		}
+		?></div><?
+	}
+	/** Custom: End */
+	?>
 	<?if($arParams["USE_CAPTCHA"] == "Y"):?>
 	<div class="mf-captcha">
 		<div class="mf-text"><?=GetMessage("MFT_CAPTCHA")?></div>
