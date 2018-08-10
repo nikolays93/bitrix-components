@@ -83,6 +83,7 @@ if(strlen($arResult["OK_MESSAGE"]) > 0)
 	</div>
 	<?else:?>
 		<input type="hidden" name="MESSAGE" value="<?=GetMessage("MFT_EMPTY")?>">
+		<input type="hidden" name="EMPTY_MESSAGE" value="1">
 	<?endif;?>
 
 	<?if($arParams["USE_CAPTCHA"] == "Y"):?>

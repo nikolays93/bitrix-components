@@ -43,21 +43,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '' && (!isset($_P
 			$MESSAGE = '';
 			foreach ($arParams["USER_FIELDS"] as $strField) {
 				if( !$strField ) continue;
-				// as required
-				if( 0 === strpos($strField, "*") ) {
-					$arField = explode(':', trim( mb_substr($strField, 1) ));
 
-					if( !isset($_POST[ $arField[0] ]) || strlen( trim($_POST[ $arField[0] ]) ) < 1 )
-						$arResult["ERROR_MESSAGE"][] = sprintf("Поле %s обязательно к заполнению", $arField[1]);
+				list($name, $label) = explode(':', trim($strField));
+
+				// as required
+				if( 0 === strpos($name, "*") ) {
+					$name = function_exists('mb_substr') ? mb_substr($name, 1) : substr($name, 1);
+
+					if( !isset($_POST[ $name ]) || strlen( trim($_POST[ $name ]) ) < 1 )
+						$arResult["ERROR_MESSAGE"][] = sprintf("Поле %s обязательно к заполнению", $label);
 				}
 
-				$arResult["USER_FIELDS"][ $arField[0] ] = htmlspecialcharsbx($_POST[ $arField[0] ]);
-				$MESSAGE .= "\r\n" . $arField[1] . ": " . htmlspecialcharsbx($_POST[ $arField[0] ]);
+				$arResult["USER_FIELDS"][ $name ] = htmlspecialcharsbx($_POST[ $name ]);
+				$MESSAGE .= "\r\n" . $label . ": " . htmlspecialcharsbx($_POST[ $name ]);
 			}
 
-			$MESSAGE .= "\r\n\r\n";
-			$MESSAGE .= htmlspecialcharsbx($_POST["MESSAGE"]);
+			if( empty($_POST['EMPTY_MESSAGE']) ) {
+				$MESSAGE .= "\r\n\r\n";
+				$MESSAGE .= htmlspecialcharsbx($_POST["MESSAGE"]);
+			}
 		}
+
+	if( in_array('EMAIL', $arParams['DEFAULT_FIELDS']) || empty($arParams['DEFAULT_FIELDS']) )
+
 		/** Custom: End */
 		if(strlen($_POST["user_email"]) > 1 && !check_email($_POST["user_email"]))
 			$arResult["ERROR_MESSAGE"][] = GetMessage("MF_EMAIL_NOT_VALID");
